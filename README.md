@@ -1,5 +1,5 @@
 # KafichApp
-## izradili: Antonio Delač i Vito Weiner
+## izradio: Antonio Delač
 Web aplikacija koja olakšava upravljanje kafićem.
 
 Zahtjevi
