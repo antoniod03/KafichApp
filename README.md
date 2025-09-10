@@ -9,6 +9,7 @@ Da biste pokrenuli aplikaciju, potrebno je imati instalirane slijedeće pakete:
     - Django (verzija 5.1.1 ili novija)
     - Django Filter (django-filter)
     - Django REST framework
+    - Django extensions
 
 
 

@@ -1,40 +1,18 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import url('"https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet');
 
 :root{
 
     --primary-color: #eeeeee;
-    --secondary-color: #dcdcdc;
+    --secondary-color: #D2691E;
     --background-color: #2a454e;
-    --font-family: 'Montserrat', sans-serif;
+    --font-family: 'Inter', sans-serif;
     --positive-color: #3EBD37;
     --negative-color: #CC4129;
     --neutral-color: #FFC801;
 
 }
 
-.btn{  /*ne koristi se*/
-    font-family: var(--font-family);
-    color: white;
-    background-color: var(--background-color);
-    border-color: var(--positive-color);
-    border-style: solid;
-    border-width: 3px;     
-    border-radius: 10px;
-    min-width: 100px;
-
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    /*text-align: center;*/
-
-    font-size: 1rem;
-    white-space: nowrap;
-}
-
-.btn:hover {
-    background-color: #1e3a42;  
-}
 
 h2{
     font-family: var(--font-family);
