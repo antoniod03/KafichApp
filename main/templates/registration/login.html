@@ -1,46 +1,69 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/registration/login.css' %}">
     <title>Login</title>
 </head>
 <body>
-    <h2>Login</h2>
-    
-    {% if form.errors %}
+
+    <div class="login-container">
+        
+        
+        <h1>Login</h1>
+        
+        {% if form.errors %}
         <h3>Unos nije ispravan.</h3>
-    {% endif %}
-
-    {% if next %}
-        {% if user.is_authenticated %}
-            <p>Your account doesn't have access to this page. To proceed, please login with an account that has access.</p>
-        {% else %}
-            <p>Please login to see this page.</p>
         {% endif %}
-    {% endif %}
+        
+        {% if next %}
+        {% if user.is_authenticated %}
+        <p>Your account doesn't have access to this page. To proceed, please login with an account that has access.</p>
+        {% else %}
+        <p>Please login to see this page.</p>
+        {% endif %}
+        {% endif %}
+        
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+           <!-- <table>
+                <tr>
+                    <td>{{ form.username.label_tag }}</td>
+                    <td>{{ form.username }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.password.label_tag }}</td>
+                    <td>{{ form.password }}</td>
+                </tr>
+            </table>-->
 
-    <form method="post" action="{% url 'login' %}">
-        {% csrf_token %}
-        <table>
-            <tr>
-                <td>{{ form.username.label_tag }}</td>
-                <td>{{ form.username }}</td>
-            </tr>
-            <tr>
-                <td>{{ form.password.label_tag }}</td>
-                <td>{{ form.password }}</td>
-            </tr>
-        </table>
-        <input type="submit" value="Login" />
-        <input type="hidden" name="next" value="{{ next }}" />
-    </form>
+            <div class="form-group">
+                <label for="{{ form.username.id_for_label }}">{{ form.username.label }}</label>
+                {{ form.username }}
+                {% for error in form.username.errors %}
+                    <div class="error">{{ error }}</div>
+                {% endfor %}
+            </div>
+    
+            <div class="form-group">
+                <label for="{{ form.password.id_for_label }}">{{ form.password.label }}</label>
+                {{ form.password }}
+                {% for error in form.password.errors %}
+                    <div class="error">{{ error }}</div>
+                {% endfor %}
+            </div>
 
-    <p>Nemate račun? <a href="{% url 'main:register' %}">Registrirajte se ovdje</a> kao novi konobar</p>
-    <p>Log in sa podacima od super-usera ima posebno sucelje napravljeno za uredivanje korisnika</p>
-    <p>Registrirajte se kao admin: </p>
-    <a href="{% url 'main:register_superuser' %}">Registrirajte se ovdje</a> kao admin 
-    <br> <br>
-    (ovo je napravljeno samo za svrhu isprobavanja funkcijonalnosti, nece biti u konacnoj aplikaciji mogucnosti registracije kao admin direktno iz log in stranice)
+            <button type="submit" value="Login" > Prijava </button>
+            <input type="hidden" name="next" value="{{ next }}" />
+        </form>
+    </div>
 
+    <div class="additional-info">
+        <p>Nemate račun? </p> 
+        <p><a href="{% url 'main:register' %}">Registrirajte se ovdje</a> kao novi konobar</p>
+        <p><a href="{% url 'main:register_superuser' %}">Registrirajte se ovdje</a> kao admin</p> 
+    </div>
 </body>
 </html>

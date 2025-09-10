@@ -4,30 +4,47 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ pice.pice_naziv }} - Detalji</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/global0.css' %}">
 </head>
 <body>
 
-    <h1>Detalji Pića: {{ pice.pice_naziv }}</h1>
+    
+    <div class="header">
+        <a href="{% url 'main:drink_list_view' %}">
+            Povratak na listu pića
+        </a>
+    </div> <!-- .header end -->
 
-    <ul>
-        <li><strong>Šifra:</strong> {{ pice.pice_sifra }}</li> 
-        <li><strong>Opis:</strong> {{ pice.pice_opis }}</li>
-        <li><strong>Količina:</strong> {{ pice.pice_kolicina_u_ml }} ml</li>
-        <li><strong>Alkohol:</strong> {% if pice.pice_sadrzi_alkohol %}Da{% else %}Ne{% endif %}</li>
-        <li><strong>Vegansko:</strong> {% if pice.pice_vegansko %}Da{% else %}Ne{% endif %}</li>
-        <li><strong>Cijena:</strong> {{ pice.pice_poj_cijena }} EURA</li>
-    </ul>
+    <div class="body">
+        <div class="container">
+            <h1>Detalji Pića: {{ pice.pice_naziv }}</h1>
 
-    <a href="{% url 'main:drink_list_view' %}">
-        <button>Povratak na listu pića</button>
-    </a>
+            <ul>
+                <li><strong>Šifra:</strong> {{ pice.pice_sifra }}</li> 
+                <li><strong>Opis:</strong> {{ pice.pice_opis }}</li>
+                <li><strong>Količina:</strong> {{ pice.pice_kolicina_u_ml }} ml</li>
+                <li><strong>Alkohol:</strong> {% if pice.pice_sadrzi_alkohol %}Da{% else %}Ne{% endif %}</li>
+                <li><strong>Vegansko:</strong> {% if pice.pice_vegansko %}Da{% else %}Ne{% endif %}</li>
+                <li><strong>Cijena:</strong> {{ pice.pice_poj_cijena }} EURA</li>
+            </ul>
+        
+        
+        <div style="display: flex; justify-content: space-evenly;">
+            <a href="{% url 'main:drink_update_view' pice.pice_sifra %}">
+                <button>Uredi</button>
+            </a>
 
-    <a href="{% url 'main:drink_update_view' pice.pice_sifra %}">
-        <button>Uredi</button>
-    </a>
-    <a href="{% url 'main:drink_delete_view' pice.pice_sifra %}">
-        <button>Obriši</button>
-    </a>
+            <a href="{% url 'main:drink_delete_view' pice.pice_sifra %}">
+                <button>Obriši</button>
+            </a>
+        </div>
+           
+        </div> <!-- .conteiner end-->
+
+    </div> <!-- .body end-->
+
+  
 
 </body>
 </html>

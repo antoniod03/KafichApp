@@ -2,15 +2,66 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/registration/register_superuser4.css' %}">
     <title>Registracija Admina</title>
 </head>
 <body>
-    <h2>Registracija Admina</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Registriraj se</button>
-    </form>
-    <a href="{% url 'login' %}">Povratak na login stranicu</a>
-</body>
-</html>
+
+
+    <div class="admin-registration-container">
+
+        
+        <h2>Registracija Admina</h2>
+        <form method="post">
+            {% csrf_token %}
+           <!-- {{ form.as_p }} -->
+       
+            <div class="form-group">
+                <label for="{{ form.username.id_for_label }}">Username</label>
+                {{ form.username }}
+                {% if form.username.errors %}
+                <div class="error">
+                    {% for error in form.username.errors %}
+                    <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ form.password1.id_for_label }}">Password</label>
+                {{ form.password1 }}
+                {% if form.password1.errors %}
+                <div class="error">
+                    {% for error in form.password1.errors %}
+                    <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            
+ 
+            <div class="form-group">
+                <label for="{{ form.password2.id_for_label }}">Confirm Password</label>
+                {{ form.password2 }}
+                {% if form.password2.errors %}
+                <div class="error">
+                    {% for error in form.password2.errors %}
+                    <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            
+            
+            
+            
+            <button type="submit">Registriraj se</button>
+        </form>
+    </div>
+
+        <a href="{% url 'login' %}">Povratak na login stranicu</a>
+    </body>
+    </html>
+    

@@ -3,16 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Potvrda brisanja stavke</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/global0.css' %}">
 </head>
 <body>
-    <h1>Jeste li sigurni da želite obrisati ovu stavku narudžbe?</h1>
-    <p>Stavka broj {{ stavka.pk }} bit će trajno obrisana.</p>
 
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-danger">Da, obriši stavku</button>
-    </form>
+    <div class="header">
+        <a href="{% url 'main:detalji_narudzbe' stavka.stavka_narudzba.narudzba_sifra %}" class="btn btn-secondary">Odustani</a>
+    </div>
 
-    <a href="{% url 'main:detalji_narudzbe' stavka.stavka_narudzba.narudzba_sifra %}" class="btn btn-secondary">Odustani</a>
+    <div class="body">
+        <div class="container">
+            <h1>Jeste li sigurni da želite obrisati ovu stavku narudžbe?</h1>
+            <p>Stavka broj {{ stavka.pk }} bit će trajno obrisana.</p>
+        
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Da, obriši stavku</button>
+            </form>
+        </div>
+
+    </div>
+
+   
+
+  
 </body>
 </html>

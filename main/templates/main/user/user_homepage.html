@@ -6,46 +6,141 @@
 
     <!-- path('', views.homepage, name='homepage'),  -->
 
+    <style>
+
+        
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+        body{
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .header{
+
+            width: 100%;
+            height: 10%;
+            background-color: #2a454e;
+            display: flex;
+            align-items: center;
+
+        }
+
+        .body{
+            width: 100%;
+            height: 90%;
+            background-color: #eeeeee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            row-gap: 50px;
+
+        }
+
+       
+
+        .homepage-container{
+            background-color: #dcdcdc;
+            border-radius: 10px;
+
+            font-family: 'Montserrat';
+
+            padding: 20px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            max-width:  2000px;
+
+
+        }
+
+        
+.btn-ancor {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Montserrat';
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+}
+
+.btn-ancor:hover {
+    background-color: #45a049;
+}
+
+    </style>
+
 
 </head>
 <body>
 
-    <h1>This is our homepage</h1>
+ 
+    
 
     {% if user.is_authenticated %}
-        <p>Vaše ime: {{ user.username }}</p>  
 
-        <form method="post" action="{% url 'logout' %}">
+    <div class="header">
+        <form  method="post" style="width: 100px; margin-left: 50px;" action="{% url 'logout' %}">
             {% csrf_token %}
-            <button type="submit">Log out</button>
+            <button class="btn-ancor" style="background-color: red;"  type="submit">Log out</button>
         </form>
+    </div>
 
+    <div class="body">
+
+    
+    <div class="homepage-container">
+
+        
+        <h1>Homepage</h1>
+        
+      
+        <p>Vaše ime: {{ user.username }}</p>  
+        
+        
+        
+        <br>
+        
+        <a class="btn-ancor" href="{% url 'main:lista_narudzbi' %}">
+           Lista narudžbi
+        </a>
+        
+        <br>
+        
+        <a class="btn-ancor" href="{% url 'main:konobar_detalji' %}">
+           Korisnički podaci
+        </a>
+        
+        <br>
 
        
-
-  
-
-        <a href="{% url 'main:lista_narudzbi' %}">
-            <button type="button">Lista narudžbi</button>
-        </a>
-
-        <br>
-
-        <a href="{% url 'main:konobar_detalji' %}">
-            <button>Korisnički podaci</button>
-        </a>
-
-        <br>
-
-         <!-- <a href="{% url 'main:show_other_users' %}">
+        <!-- <a href="{% url 'main:show_other_users' %}">
             <button type="button">Prikaz drugih korisnika</button>
         </a> -->
+        
+        
+        
+    </div>    
+    
+  
 
+</div>
 
     {% else %}
         <p>Niste prijavljeni.</p> 
-    {% endif %}
+        {% endif %}
     
-
 </body>
 </html>

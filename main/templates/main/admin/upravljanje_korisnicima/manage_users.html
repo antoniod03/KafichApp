@@ -3,10 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Upravljanje korisnicima</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/global0.css' %}">
 </head>
 <body>
+
+    <div class="header">
+        <a href="{% url 'main:homepage' %}">Nazad na početnu</a>
+    </div> <!-- .header end -->
+
+    <div class="body">
+        <div class="container">
+
+
+
+
     <h1>Upravljanje korisnicima</h1>
-    <a href="{% url 'main:homepage' %}">Nazad na početnu</a>
+    
     <a href="{% url 'main:add_user' %}">Dodaj novog korisnika</a> 
 
 
@@ -53,5 +66,10 @@
         </tr>
         {% endfor %}
     </table>
+
+</div> <!-- .conteiner end-->
+
+</div> <!-- .body end-->
+
 </body>
 </html>

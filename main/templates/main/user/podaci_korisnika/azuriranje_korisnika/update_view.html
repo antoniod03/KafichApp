@@ -3,21 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Uredi Podatke</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/global0.css' %}">
 </head>
 <body>
-    <h1>Uredi Podatke</h1>
 
-    <form method="post">
-        {% csrf_token %}
-        <h2>Podaci korisničkog računa</h2>
-        {{ user_form.as_p }}
 
-        <h2>Podaci konobara</h2>
-        {{ konobar_form.as_p }}
+    <div class="header">
+        <a href="{% url 'main:konobar_detalji' %}">Natrag</a>
+    </div>
 
-        <button type="submit">Spremi Promjene</button>
-    </form>
+    <div class="body">
 
-    <a href="{% url 'main:konobar_detalji' %}"><button>Natrag</button></a>
+       
+        <div class="container">
+
+            
+            <h1>Uredi Podatke</h1>
+            
+            <form method="post">
+                {% csrf_token %}
+                <h2>Podaci korisničkog računa</h2>
+                {{ user_form.as_p }}
+                
+                <h2>Podaci konobara</h2>
+                {{ konobar_form.as_p }}
+                
+                <button type="submit">Spremi Promjene</button>
+            </form>
+            
+        </div>
+    </div>
+
+
+
+
 </body>
 </html>

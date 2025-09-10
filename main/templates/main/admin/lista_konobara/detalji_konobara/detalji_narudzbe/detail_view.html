@@ -3,15 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Detalji narudžbe</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/global0.css' %}">
 </head>
 <body>
-    <h1>Detalji narudžbe {{ narudzba.narudzba_sifra }}</h1>
 
     
-    <a href="{% url 'main:konobar_detail' user_pk=narudzba.narudzba_konobar.pk %}">
-        povratak
-    </a>
+    <div class="header">
     
+        <a href="{% url 'main:konobar_detail' user_pk=narudzba.narudzba_konobar.pk %}">
+            povratak
+        </a>
+        
+    </div> <!-- .header end -->
+
+    <div class="body">
+        <div class="container">
+
+
+
+    <h1>Detalji narudžbe {{ narudzba.narudzba_sifra }}</h1>
+
+
     <p><strong>Datum kreiranja:</strong> {{ narudzba.narudzba_datum_kreiranja }}</p>
     <p><strong>Ukupna cijena:</strong> {{ narudzba.narudzba_ukupna_cijena }} EURA</p>
     <p><strong>Statut narudžbe:</strong> {% if narudzba.narudzba_placena %} Plaćena {% else %} Nije plaćena {% endif %}</p>
@@ -35,6 +48,9 @@
             </li>
         {% endfor %}
     </ul>
+</div> <!-- .conteiner end-->
+
+</div> <!-- .body end-->
 
     
 </body>

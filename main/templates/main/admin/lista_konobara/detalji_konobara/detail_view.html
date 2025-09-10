@@ -3,60 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <title>Detalji konobara</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/global0.css' %}">
 </head>
 <body>
 
    
+    <div class="header">
+        <a href="{% url 'main:konobar_list_view' %}">
+            povratak
+        </a>
+    </div> <!-- .header end -->
 
+    <div class="body">
+        <div class="container">
+            <h1>{{ konobar.konobar_ime }} {{ konobar.konobar_prezime }}</h1>
 
-    <h1>{{ konobar.konobar_ime }} {{ konobar.konobar_prezime }}</h1>
-
-    <a href="{% url 'main:konobar_list_view' %}">
-        povratak
-    </a>
-    
-    <br>
-    <br>
-
-
-    <p>Datum zaposlenja: {{ konobar.konobar_datum_zaposlenja }}</p>
-    <p>Zarada: {{ konobar.konobar_zarada }} EURA</p>
-    <p>Telefon: {{ konobar.konobar_telefon }}</p>
-
-
-    <br>
-    <br>
-    <form method="GET">
-        <label>
-            <input type="radio" name="placeno" value="true" {% if request.GET.placeno == "true" %}checked{% endif %}>
-            Plaćene
-        </label>
-        <label>
-            <input type="radio" name="placeno" value="false" {% if request.GET.placeno == "false" %}checked{% endif %}>
-            Neplaćene
-        </label>
-        <label>
-            <input type="radio" name="placeno" value="" {% if not request.GET.placeno %}checked{% endif %}>
-            Sve
-        </label>
-        <button type="submit">Filtriraj</button>
-    </form>
-    <br>
-    <br>
 
     
+            <br>
+            <br>
+        
+        
+            <p>Datum zaposlenja: {{ konobar.konobar_datum_zaposlenja }}</p>
+            <p>Zarada: {{ konobar.konobar_zarada }} EURA</p>
+            <p>Telefon: {{ konobar.konobar_telefon }}</p>
+        
+        
+            <br>
+            <br>
+            <form method="GET">
+                <label>
+                    <input type="radio" name="placeno" value="true" {% if request.GET.placeno == "true" %}checked{% endif %}>
+                    Plaćene
+                </label>
+                <label>
+                    <input type="radio" name="placeno" value="false" {% if request.GET.placeno == "false" %}checked{% endif %}>
+                    Neplaćene
+                </label>
+                <label>
+                    <input type="radio" name="placeno" value="" {% if not request.GET.placeno %}checked{% endif %}>
+                    Sve
+                </label>
+                <button type="submit">Filtriraj</button>
+            </form>
+            <br>
+            <br>
+        
+            
+        
+            <h2>Narudžbe</h2>
+            <ul>
+                {% for narudzba in narudzbe %}
+                    <li>
+                        <a href="{% url 'main:narudzba_detail' narudzba.narudzba_sifra %}">
+                            {{ narudzba.narudzba_sifra }} - {{ narudzba.narudzba_ukupna_cijena }} EURA
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        
+         
+        </div> <!-- .conteiner end-->
 
-    <h2>Narudžbe</h2>
-    <ul>
-        {% for narudzba in narudzbe %}
-            <li>
-                <a href="{% url 'main:narudzba_detail' narudzba.narudzba_sifra %}">
-                    {{ narudzba.narudzba_sifra }} - {{ narudzba.narudzba_ukupna_cijena }} EURA
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
+    </div> <!-- .body end-->
 
- 
+   
 </body>
 </html>

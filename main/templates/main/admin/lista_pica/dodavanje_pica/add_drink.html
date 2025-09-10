@@ -3,20 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Dodaj Piće</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/global0.css' %}">
+
 </head>
 <body>
 
-    <h1>Dodaj Novo Piće</h1>
+    <div class="header">
+        <a href="{% url 'main:drink_list_view' %}">
+            Povratak na listu pića
+        </a>
+    </div> <!-- .header end -->
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Dodaj piće</button>
-    </form>
+    <div class="body">
+        <div class="container">
+            <h1>Dodaj Novo Piće</h1>
 
-    <a href="{% url 'main:drink_list_view' %}">
-        <button>Povratak na listu pića</button>
-    </a>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Dodaj piće</button>
+            </form>
+        
+
+        </div> <!-- .conteiner end-->
+
+    </div> <!-- .body end-->
+
+ 
 
 </body>
 </html>

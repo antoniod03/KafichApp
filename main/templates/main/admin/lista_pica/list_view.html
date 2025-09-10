@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista Pića</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/global0.css' %}">
 
     <script>
         // Osiguravanje vracanje defaultne vrijednosti za input formu
@@ -19,6 +21,20 @@
 </head>
 <body>
 
+    <div class="header">
+         
+    <a href="{% url 'main:homepage' %}">
+       Povratak na početnu stranicu
+    </a>
+
+    </div> <!-- .header end -->
+
+    <div class="body">
+        <div class="container">
+
+
+
+
     <h1>Lista Pića</h1>
 
     <a href="{% url 'main:dodaj_pice' %}">
@@ -29,10 +45,7 @@
     <br>
 
 
- 
-    <a href="{% url 'main:homepage' %}">
-        <button>Povratak na početnu stranicu</button>
-    </a>
+
  
  
 
@@ -135,7 +148,9 @@
             </span>
         </div>
     {% endif %}
+</div> <!-- .conteiner end-->
 
+</div> <!-- .body end-->
    
 </body>
 </html>

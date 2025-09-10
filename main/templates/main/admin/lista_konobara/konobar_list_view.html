@@ -3,35 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista konobara</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/global0.css' %}">
+
+
 </head>
 <body>
-    <h1>Lista konobara</h1>
-
-    <a href="{% url 'main:homepage' %}">
-        povratak
-    </a>
 
 
-       <!-- Forma za pretragu -->
-    <form method="get">
-        <label for="search">Pretraži po imenu ili username-u:</label>
-        <input type="text" name="search" id="search" value="{{ request.GET.search }}">
-        <button type="submit">Pretraži</button>
-    </form>
+    <div class="header">
+        <a href="{% url 'main:homepage' %}">
+            povratak
+        </a>    
+    </div> <!-- .header end -->
+
+    <div class="body">
+        <div class="container">
+
+            <h1>Lista konobara</h1>
 
 
-    <ul>
-        {% for konobar in konobari %}
-            <li>
-                <a href="{% url 'main:konobar_detail' user_pk=konobar.user.pk %}">
-                    {{ konobar.konobar_ime }} {{ konobar.konobar_prezime }}
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
 
+            <!-- Forma za pretragu -->
+         <form method="get">
+             <label for="search">Pretraži po imenu ili username-u:</label>
+             <input type="text" name="search" id="search" value="{{ request.GET.search }}">
+             <button type="submit">Pretraži</button>
+         </form>
+     
+     
+         <ul>
+             {% for konobar in konobari %}
+                 <li>
+                     <a href="{% url 'main:konobar_detail' user_pk=konobar.user.pk %}">
+                         {{ konobar.konobar_ime }} {{ konobar.konobar_prezime }}
+                     </a>
+                 </li>
+             {% endfor %}
+         </ul>
+     
+     
+         
+     
+        </div> <!-- .conteiner end-->
 
-    
+    </div> <!-- .body end-->
+
 
 
 </body>

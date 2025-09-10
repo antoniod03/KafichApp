@@ -3,16 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Obriši Piće</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/global0.css' %}">
 </head>
 <body>
-    <h1>Potvrda Brisanja</h1>
-    <p>Jeste li sigurni da želite obrisati piće "{{ object.pice_naziv }}"?</p>
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit">Da, Obriši</button>
+
+    
+    <div class="header">
         <a href="{% url 'main:pice_detail' object.pk %}">
-            <button type="button">Ne, Povratak</button>
+            Povratak
         </a>
-    </form>
+    </div> <!-- .header end -->
+
+    <div class="body">
+        <div class="container">
+            <h1>Potvrda Brisanja</h1>
+            <p>Jeste li sigurni da želite obrisati piće "{{ object.pice_naziv }}"?</p>
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit">Da, Obriši</button>
+        
+            </form>
+        </div> <!-- .conteiner end-->
+
+    </div> <!-- .body end-->
+
+
+
 </body>
 </html>

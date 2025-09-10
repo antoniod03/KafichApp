@@ -1,16 +1,6 @@
 # KafichApp
-## izradili: Vito Weiner i Antonio Delač
+## izradili: Antonio Delač i Vito Weiner
 Web aplikacija koja olakšava upravljanje kafićem.
-
-
-UPDATE - PORUKA ZA 4 PRAKTIČNI ZADATAK:
-implementirani su REST API endpointi te im se može pristupiti nakon prijave korisnika u aplikaciji putem slijedećih authentifikacijskih podataka:
-
-
-username: admin
-password: admin
-
-Otvara se izbornik, te se pod stavkom "lista pića (REST)" nalazi GUI sučelje za pozivanje endpointova.
 
 Zahtjevi
 
@@ -28,8 +18,8 @@ ili se mogu upotrijebiti podaci za log in već postojećih admina i korisnika:
 
 ADMIN
 username: admin
-password: admin
+password: admin12345
 
 USER
-username: user1
-password: nana123nana123 
+username: user
+password: user12345 

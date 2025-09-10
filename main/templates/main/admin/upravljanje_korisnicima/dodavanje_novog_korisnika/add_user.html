@@ -3,20 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Dodaj novog korisnika</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/global0.css' %}">
 </head>
 <body>
-    <h1>Dodaj novog korisnika</h1>
-    <a href="{% url 'main:manage_users' %}">Nazad na upravljanje korisnicima</a>
 
-    <br>
-    <br>
-    <!-- Gumbi za odabir tipa korisnika -->
-    <a href="{% url 'main:add_admin' %}">
-        <button type="button">Dodaj Admina</button>
-    </a>
-    <br>
-    <a href="{% url 'main:add_konobar' %}">
-        <button type="button">Dodaj Konobara</button>
-    </a>
+
+    
+    <div class="header">
+        <a href="{% url 'main:manage_users' %}">Nazad na upravljanje korisnicima</a>
+    </div> <!-- .header end -->
+
+    <div class="body">
+        <div class="container">
+            <h1>Dodaj novog korisnika</h1>
+            
+        
+            <br>
+            <br>
+            <!-- Gumbi za odabir tipa korisnika -->
+            <a href="{% url 'main:add_admin' %}">
+                <button type="button">Dodaj Admina</button>
+            </a>
+            <br>
+            <br>
+            <a href="{% url 'main:add_konobar' %}">
+                <button type="button">Dodaj Konobara</button>
+            </a>
+        </div> <!-- .conteiner end-->
+
+    </div> <!-- .body end-->
+
+
+
 </body>
 </html>

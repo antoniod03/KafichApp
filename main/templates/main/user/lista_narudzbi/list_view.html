@@ -1,81 +1,176 @@
 
-<h1>Popis narudžbi</h1>
-
-<button>
-    <a href="{% url 'main:kreiraj_narudzbu'%}" class="btn btn-primary">+ Dodaj novu narudžbu</a>
-</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     
-<br>
-<br>
-
-<a href="{% url 'main:homepage'%}" class="btn btn-primary">
-    
-    <button>
-        Povratak na izbornik
-        
-    </button>
-    
-</a>
-
-<br>
-<br>
 
 
+<style>
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body {
+    width: 100vw;
+    height: 100vh;  /* Puni ekran visinom */
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Postavljanje elemenata vertikalno */
+    font-family: 'Montserrat';
+}
+
+.header {
+    background-color: #2a454e;
+    height: 10%;  /* 10% visine */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+
+.body {
+    background-color: #eeeeee;
+    height: 90%;  /* 90% visine */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.order-container{
+    background-color: #cdcdcd;
+    border-radius: 20px;
+    padding: 50px;
+
+}
+
+.btn-ancor {
+    width: 300px;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Montserrat';
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex-grow: 0;
+}
+
+.btn-ancor:hover {
+    background-color: #45a049;
+}
+
+</style>
+
+</head>
+<body>
  
-<form method="get">
-    <label for="placena">Filtriraj po statusu plaćanja:</label>
-    <select name="placena" id="placena">
-        <option value="">Svi</option>
-        <option value="true">Plaćene</option>
-        <option value="false">Neplaćene</option>
-    </select>
-    <button type="submit">Primijeni</button>
-</form>
-
-<table>
-    <thead>
-        <tr>
-            <th>Šifra</th>
-            <th>Broj stavki</th>
-            <th>Konobar</th>
-            <th>Datum kreiranja</th>
-            <th>Plaćena</th>
-            <th>Detalji</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for narudzba in narudzbe %}
-        <tr>
-            <td><a href="{% url 'main:detalji_narudzbe' narudzba.narudzba_sifra %}">{{ narudzba.narudzba_sifra }}</a></td>
-            <td>{{ narudzba.narudzba_kolicina_stavki }}</td>
-            <td>{{ narudzba.narudzba_konobar.username }}</td>
-            <td>{{ narudzba.narudzba_datum_kreiranja|date:"d.m.Y H:i" }}</td>
-            <td>{{ narudzba.narudzba_placena|yesno:"Da,Ne" }}</td>
-            <td><a href="{% url 'main:detalji_narudzbe' narudzba.narudzba_sifra %}" class="btn btn-info">Detalji</a></td>
-        </tr>
-        {% empty %}
-        <tr>
-            <td colspan="6">Nema narudžbi za prikaz.</td>
-        </tr>
-        {% endfor %}
-
-    </tbody>
-</table>
-
-<div class="pagination">
-    {% if is_paginated %}
-        {% if page_obj.has_previous %}
-            <a href="?page=1">Prva</a>
-            <a href="?page={{ page_obj.previous_page_number }}">Prethodna</a>
-        {% endif %}
-
-        <span>Stranica {{ page_obj.number }} od {{ page_obj.paginator.num_pages }}</span>
-
-        {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">Sljedeća</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}">Zadnja</a>
-        {% endif %}
-    {% endif %}
+    
+<div class="header">
+    <a href="{% url 'main:homepage'%}" style="background-color: red; margin-left: 50px;" class="btn-ancor">
+        Povratak na izbornik
+    </a>
 </div>
+
+<div class="body">
+
+    
+<div class="order-container">
+
+    
+    <h1 style="text-align: center;">Popis narudžbi</h1>
+
+    <br>
+    
+    <div style="display: flex; justify-content: center;">
+        <button>
+            <a href="{% url 'main:kreiraj_narudzbu'%}" class="btn-primary">+ Dodaj novu narudžbu</a>
+        </button>
+    </div>
+        
+    <br>
+    <br>
+    
+    
+    
+    <br>
+    <br>
+    
+    
+    
+     
+    <form method="get">
+        <label for="placena">Filtriraj po statusu plaćanja:</label>
+        <select name="placena" id="placena">
+            <option value="">Svi</option>
+            <option value="true">Plaćene</option>
+            <option value="false">Neplaćene</option>
+        </select>
+        <button type="submit">Primijeni</button>
+    </form>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Šifra</th>
+                <th>Broj stavki</th>
+                <th>Konobar</th>
+                <th>Datum kreiranja</th>
+                <th>Plaćena</th>
+                <th>Detalji</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for narudzba in narudzbe %}
+            <tr>
+                <td><a href="{% url 'main:detalji_narudzbe' narudzba.narudzba_sifra %}">{{ narudzba.narudzba_sifra }}</a></td>
+                <td>{{ narudzba.narudzba_kolicina_stavki }}</td>
+                <td>{{ narudzba.narudzba_konobar.username }}</td>
+                <td>{{ narudzba.narudzba_datum_kreiranja|date:"d.m.Y H:i" }}</td>
+                <td>{{ narudzba.narudzba_placena|yesno:"Da,Ne" }}</td>
+                <td><a href="{% url 'main:detalji_narudzbe' narudzba.narudzba_sifra %}" class="btn btn-info">Detalji</a></td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">Nema narudžbi za prikaz.</td>
+            </tr>
+            {% endfor %}
+    
+        </tbody>
+    </table>
+    
+    <div class="pagination">
+        {% if is_paginated %}
+            {% if page_obj.has_previous %}
+                <a href="?page=1">Prva</a>
+                <a href="?page={{ page_obj.previous_page_number }}">Prethodna</a>
+            {% endif %}
+    
+            <span>Stranica {{ page_obj.number }} od {{ page_obj.paginator.num_pages }}</span>
+    
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">Sljedeća</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">Zadnja</a>
+            {% endif %}
+        {% endif %}
+    </div>
+    
+    
+    
+    </div>
+
+</div>
+
+
+</body>
+</html>
+
 

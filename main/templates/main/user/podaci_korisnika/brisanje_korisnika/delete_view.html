@@ -3,14 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Potvrda brisanja računa</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/global0.css' %}">
+
 </head>
 <body>
-    <h1>Potvrda brisanja korisničkog računa</h1>
-    <p>Jeste li sigurni da želite obrisati svoj korisnički račun?</p>
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-danger">Da, obriši račun</button>
+
+
+    <div class="header">
         <a href="{% url 'main:konobar_detalji' %}" class="btn btn-secondary">Odustani</a>
-    </form>
+    </div>
+
+    <div class="body">
+        <div class="container">
+            <h1>Potvrda brisanja korisničkog računa</h1>
+            <p>Jeste li sigurni da želite obrisati svoj korisnički račun?</p>
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Da, obriši račun</button>
+                
+            </form>
+        </div>
+
+    </div>
+
+
+    
 </body>
 </html>

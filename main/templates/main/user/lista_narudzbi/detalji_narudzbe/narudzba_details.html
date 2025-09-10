@@ -1,3 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/global0.css' %}">
+</head>
+<body>
+
+
+    <div class="header">
+        <a href="{% url 'main:lista_narudzbi' %}" class="btn btn-secondary">Povratak na popis narudžbi</a>
+    </div>
+
+    <div class="body">
+        <div class="container">
+
+            
+
 <h1>Detalji narudžbe {{ narudzba.narudzba_sifra }}</h1>
 <p>Status plaćanja: {% if narudzba.narudzba_placena %} Plaćena {% else %} Neplaćena {% endif %}</p>
 <p>Datum kreiranja: {{ narudzba.narudzba_datum_kreiranja|date:"d.m.Y H:i" }}</p>
@@ -61,8 +82,18 @@
 
 
 
-<a href="{% url 'main:lista_narudzbi' %}" class="btn btn-secondary">Povratak na popis narudžbi</a>
+
 
 <a href="{% url 'main:narudzba_delete_view' narudzba.narudzba_sifra %}">
     <button>Obriši</button>
 </a>
+
+        </div> <!--end for container-->
+
+    </div> <!-- end for body-->
+    
+
+
+
+</body>
+</html>

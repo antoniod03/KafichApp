@@ -2,14 +2,79 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/registration/register.css' %}">
     <title>Registracija</title>
+
+
+
+
 </head>
 <body>
-    <h1>Registracija korisnika</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }} <!-- Automatski prikaz svih polja forme u paragrafima -->
-        <button type="submit">Registriraj se</button>
-    </form>
+
+    <div class="register-container">
+
+        <h1>Registracija korisnika</h1>
+
+        {% if form.errors %}
+        <div class="form-errors">
+            <ul>
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+           <!-- {{ form.as_p }} -->
+        
+            <div class="form-group">
+                <label for="{{ form.username.id_for_label }}">{{ form.username.label }}</label>
+                {{ form.username }}
+            </div>
+    
+            <div class="form-group">
+                <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+                {{ form.email }}
+            </div>
+    
+            <div class="form-group">
+                <label for="{{ form.konobar_ime.id_for_label }}">{{ form.konobar_ime.label }}</label>
+                {{ form.konobar_ime }}
+            </div>
+    
+            <div class="form-group">
+                <label for="{{ form.konobar_prezime.id_for_label }}">{{ form.konobar_prezime.label }}</label>
+                {{ form.konobar_prezime }}
+            </div>
+    
+            <div class="form-group">
+                <label for="{{ form.konobar_telefon.id_for_label }}">{{ form.konobar_telefon.label }}</label>
+                {{ form.konobar_telefon }}
+            </div>
+    
+            <div class="form-group">
+                <label for="{{ form.password1.id_for_label }}">{{ form.password1.label }}</label>
+                {{ form.password1 }}
+            </div>
+    
+            <div class="form-group">
+                <label for="{{ form.password2.id_for_label }}">{{ form.password2.label }}</label>
+                {{ form.password2 }}
+            </div>
+            
+            <button type="submit">Registriraj se</button>
+
+            
+        </form>
+    </div>
+
+    <a href="{% url 'login' %}">Povratak na login stranicu</a>
+
+
 </body>
 </html>

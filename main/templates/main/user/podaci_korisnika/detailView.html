@@ -3,8 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Detalji Korisnika</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/global0.css' %}">
 </head>
 <body>
+
+
+    <div class="header">
+        <a href="{% url 'main:homepage' %}">Natrag na početnu stranicu</a>
+
+    </div>
+
+    <div class="body">
+        <div class="container">
+
+       
+
+
+
     <h1>Detalji Korisnika</h1>
 
     <h2>Podaci iz User modela</h2>
@@ -19,7 +36,7 @@
     <p>Zarada: {{ konobar.konobar_zarada }}</p>
     <p>Telefon: {{ konobar.konobar_telefon }}</p>
 
-    <a href="{% url 'main:homepage' %}"><button>Natrag na početnu stranicu</button></a>
+   
 
     <br>
     <br>
@@ -33,6 +50,8 @@
 
     <a href="{% url 'main:delete_user' %}" class="btn btn-danger">Obriši račun</a>
 
+    </div>
+</div>
 
 </body>
 </html>

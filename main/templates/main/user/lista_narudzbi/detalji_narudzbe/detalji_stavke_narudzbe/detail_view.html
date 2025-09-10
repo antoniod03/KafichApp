@@ -1,32 +1,61 @@
-<h1>Detalji stavke narudžbe</h1>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'styles/global0.css' %}">
+</head>
+<body>
+
+
+  <div class="header">
+    <a href="{% url 'main:detalji_narudzbe' stavka.stavka_narudzba.narudzba_sifra %}">Povratak na detalje narudžbe</a>
+  </div>
+
+  <div class="body">
+    <div class="container">
+      <h1>Detalji stavke narudžbe</h1>
   
-  <h2>{{ stavka.stavka_pice.pice_naziv }} (x{{ stavka.stavka_kolicina_pica }})</h2>
-  
-  <p><strong>Broj stavke:</strong> {{ stavka.pk }}</p>
-  <p><strong>Šifra narudžbe:</strong> {{ stavka.stavka_narudzba.narudzba_sifra }}</p>
-  <p><strong>Količina:</strong> {{ stavka.stavka_kolicina_pica }}</p>
-  <p><strong>Cijena po komadu:</strong> {{ stavka.stavka_pice.pice_poj_cijena }} EUR</p>
-  <p><strong>Ukupna cijena:</strong> {{ stavka.stavka_ukupna_cijena }} EUR</p>
-  
-  <a href="{% url 'main:detalji_narudzbe' stavka.stavka_narudzba.narudzba_sifra %}">Povratak na detalje narudžbe</a>
-
-  <br>
-
-
-  {% if not stavka.stavka_narudzba.narudzba_placena %}
-  <h3>Opcije stavke</h3>
-<form method="get" action="{% url 'main:stavka_delete_view' stavka.stavka_sifra %}">
-    {% csrf_token %}
-    <button type="submit" class="btn btn-danger">Obriši stavku</button>
-</form>
-
-<form method="get" action="{% url 'main:stavka_update_view' stavka.stavka_sifra %}">
-  <button type="submit" class="btn btn-primary">Ažuriraj količinu</button>
-</form>
-
-{% else %}
+      <h2>{{ stavka.stavka_pice.pice_naziv }} (x{{ stavka.stavka_kolicina_pica }})</h2>
+      
+      <p><strong>Broj stavke:</strong> {{ stavka.pk }}</p>
+      <p><strong>Šifra narudžbe:</strong> {{ stavka.stavka_narudzba.narudzba_sifra }}</p>
+      <p><strong>Količina:</strong> {{ stavka.stavka_kolicina_pica }}</p>
+      <p><strong>Cijena po komadu:</strong> {{ stavka.stavka_pice.pice_poj_cijena }} EUR</p>
+      <p><strong>Ukupna cijena:</strong> {{ stavka.stavka_ukupna_cijena }} EUR</p>
+      
+     
     
-    <button type="button" class="btn btn-danger" disabled>Stavka ne može biti obrisana jer je narudžba plaćena</button>
-    <br>
-    <button type="button" class="btn btn-primary" disabled>Stavka ne može biti ažurirana jer je narudžba plaćena</button>
-{% endif %}
+      <br>
+    
+    
+      {% if not stavka.stavka_narudzba.narudzba_placena %}
+      <h3>Opcije stavke</h3>
+    <form method="get" action="{% url 'main:stavka_delete_view' stavka.stavka_sifra %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Obriši stavku</button>
+    </form>
+    
+    <form method="get" action="{% url 'main:stavka_update_view' stavka.stavka_sifra %}">
+      <button type="submit" class="btn btn-primary">Ažuriraj količinu</button>
+    </form>
+    
+    {% else %}
+        
+        <button type="button" class="btn btn-danger" disabled>Stavka ne može biti obrisana jer je narudžba plaćena</button>
+        <br>
+        <button type="button" class="btn btn-primary" disabled>Stavka ne može biti ažurirana jer je narudžba plaćena</button>
+    {% endif %}
+    
+    </div>
+
+  </div>
+
+ 
+
+</body>
+</html>
+

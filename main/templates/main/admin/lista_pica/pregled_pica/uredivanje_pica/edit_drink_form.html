@@ -3,20 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Ažuriraj Piće</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/global0.css' %}">
+
 </head>
 <body>
-    <h1>Ažuriraj Piće</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Spremi</button>
-    </form>
 
-    <a href="{% url 'main:pice_detail' pk=pice.pk %}">
-        <button>
-            nazad
-        </button>
-    </a>
+
+    <div class="header">
+        <a href="{% url 'main:pice_detail' pk=pice.pk %}">
+         
+                nazad
+          
+        </a>
+    </div> <!-- .header end -->
+
+    <div class="body">
+        <div class="container">
+
+
+            <h1>Ažuriraj Piće</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Spremi</button>
+            </form>
+        
+        
+        
+        </div> <!-- .conteiner end-->
+
+    </div> <!-- .body end-->
+
 
 
 </body>

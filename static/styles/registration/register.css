@@ -1,0 +1,31 @@
+@import url('./../global2.css');
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    row-gap: 50px;
+
+    background-color: var(--primary-color);
+    font-family: var(--font-family);
+
+}
+
+.register-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /*text-align: center;
+    width: 100%;*/
+    max-width: 2000px;
+    background-color: var(--secondary-color);
+    padding: 20px;
+    border-radius: 20px;
+
+}
+

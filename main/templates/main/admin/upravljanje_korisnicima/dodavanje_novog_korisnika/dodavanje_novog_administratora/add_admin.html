@@ -3,15 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Dodaj Admina</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/global0.css' %}">
+
 </head>
 <body>
-    <h1>Dodaj Admina</h1>
-    <a href="{% url 'main:add_user' %}">Nazad na upravljanje korisnicima</a>
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}  <!-- Form rendering -->
-        <button type="submit">Spremi Admina</button>
-    </form>
+    <div class="header">
+        <a href="{% url 'main:add_user' %}">Nazad na upravljanje korisnicima</a>
+    </div> <!-- .header end -->
+
+    <div class="body">
+        <div class="container">
+            <h1>Dodaj Admina</h1>
+            
+        
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}  <!-- Form rendering -->
+                <button type="submit">Spremi Admina</button>
+            </form>
+        </div> <!-- .conteiner end-->
+
+    </div> <!-- .body end-->
+
+
+
 </body>
 </html>

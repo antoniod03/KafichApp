@@ -3,17 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Ažuriraj stavku narudžbe</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/global0.css' %}">
 </head>
 <body>
-    <h1>Ažuriraj količinu za {{ object.stavka_pice.pice_naziv }}</h1>
+
+    <div class="header">
+        <a href="{% url 'main:stavka_narudzbe' pk=object.stavka_sifra %}" class="btn btn-secondary">Povratak</a>
+    </div>
+
+    <div class="body">
+        <div class="container">
+            <h1>Ažuriraj količinu za {{ object.stavka_pice.pice_naziv }}</h1>
     
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-success">Spremi promjene</button>
-    </form>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-success">Spremi promjene</button>
+            </form>
+            
+        </div>
+        
+    </div>
+
     
-    <a href="{% url 'main:stavka_narudzbe' pk=object.stavka_sifra %}" class="btn btn-secondary">Povratak</a>
+   
 
 </body>
 </html>

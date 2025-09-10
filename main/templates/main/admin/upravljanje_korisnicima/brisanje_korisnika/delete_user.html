@@ -3,14 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Obriši korisnika</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/global0.css' %}">
+
 </head>
 <body>
-    <h1>Obriši korisnika</h1>
-    <p>Jeste li sigurni da želite obrisati korisnika {{ user.username }}?</p>
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit">Obriši</button>
-    </form>
-    <a href="{% url 'main:manage_users' %}">Nazad</a>
+
+    <div class="header">
+        <a href="{% url 'main:manage_users' %}">Nazad</a>
+    </div> <!-- .header end -->
+
+    <div class="body">
+        <div class="container">
+            <h1>Obriši korisnika</h1>
+            <p>Jeste li sigurni da želite obrisati korisnika {{ user.username }}?</p>
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit">Obriši</button>
+            </form>
+            
+        </div> <!-- .conteiner end-->
+
+    </div> <!-- .body end-->
+
+
+
 </body>
 </html>

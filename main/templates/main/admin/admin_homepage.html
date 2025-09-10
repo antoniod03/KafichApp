@@ -3,46 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/global0.css' %}">
+    <style>
+        .btn-ancor {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Montserrat';
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+}
+
+.btn-ancor:hover {
+    background-color: #45a049;
+}
+
+    </style>
 </head>
 <body>
 
-    <h1>This is our Admin homepage</h1>
+    <div class="header">
+        
 
-    {% if user.is_authenticated %}
-        <p>Vaše ime: {{ user.username }}</p> 
+            <form method="post" style="width: 100px; margin-left: 50px;" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button class="btn-ancor" type="submit" style="background-color: red;">Log out</button>
+            </form>
+       
+    </div>
 
-        <form method="post" action="{% url 'logout' %}">
-            {% csrf_token %}
-            <button type="submit">Log out</button>
-        </form>
+    <div class="body" style="text-align: center;">
+        <div class="container">
+            <h1>This is our Admin homepage</h1>
 
-        <a href="{% url 'main:manage_users' %}">
-            <button>Upravljanje korisnicima</button>
-        </a>
+            {% if user.is_authenticated %}
+                <p>Vaše ime: {{ user.username }}</p> 
 
-        <br>
-
-        <a href="{% url 'main:drink_list_view' %}">
-            <button>Lista pića</button>
-        </a>
-
-        <br>
-
-        <a href="{% url 'main:konobar_list_view' %}">
-            <button>Pregled podataka trenutnih konobara i narudžbi</button>
-        </a>
-
-        <br>
-
-        <a href="{% url 'main:pica_list_view_REST' %}">
-            <button>Lista pića (REST)</button>
-        </a>
-
-
-
-    {% else %}
-        <p>Niste prijavljeni.</p> 
-    {% endif %}
+                <br>
+                <br>
+        
+                
+        
+                <a class="btn-ancor" href="{% url 'main:manage_users' %}">
+                    Upravljanje korisnicima
+                </a>
+        
+                <br>
+                <br>
+        
+                <a class="btn-ancor" href="{% url 'main:drink_list_view' %}">
+                    Lista pića
+                </a>
+        
+                <br>
+                <br>
+        
+                <a class="btn-ancor" href="{% url 'main:konobar_list_view' %}">
+                    Pregled podataka trenutnih konobara i narudžbi
+                </a>
+        
+        
+        
+            {% else %}
+                <p>Niste prijavljeni.</p> 
+            {% endif %}
+        </div>
+    </div>
+   
     
 
 </body>

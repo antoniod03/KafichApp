@@ -3,16 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Potvrda brisanja</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/global0.css' %}">
 </head>
 <body>
-    <h1>Jeste li sigurni da želite obrisati ovu narudžbu?</h1>
-    <p>Narudžba {{ narudzba.narudzba_sifra }} će biti trajno obrisana.</p>
 
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-danger">Da, obriši narudžbu</button>
-    </form>
+    <div class="header">
+        <a href="{% url 'main:lista_narudzbi' %}" class="btn btn-secondary">Odustani</a>
+    </div>
 
-    <a href="{% url 'main:lista_narudzbi' %}" class="btn btn-secondary">Odustani</a>
+    <div class="body">
+        <div class="container">
+            <h1>Jeste li sigurni da želite obrisati ovu narudžbu?</h1>
+            <p>Narudžba {{ narudzba.narudzba_sifra }} će biti trajno obrisana.</p>
+        
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Da, obriši narudžbu</button>
+            </form>
+        
+           
+        </div>
+
+    </div>
+
+
+
 </body>
 </html>
